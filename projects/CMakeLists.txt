@@ -4,5 +4,6 @@ project(kmms_prog_2023)
 
 add_subdirectory(SmartSort)
 add_subdirectory(obuchaika)
+add_subdirectory(prefix_sum)
 
 set(CMAKE_SUPPRESS_REGENERATION true)

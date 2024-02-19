@@ -17,3 +17,4 @@ cmake --build .
 
 copy ..\%SOURCE_FOLDER%\SmartSort\run_bubble_sort.bat .\SmartSort
 copy ..\%SOURCE_FOLDER%\obuchaika\run_obuchaika.bat .\obuchaika
+copy ..\%SOURCE_FOLDER%\prefix_sum\run_prefix_sum.bat .\prefix_sum

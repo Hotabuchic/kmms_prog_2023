@@ -1,3 +1,0 @@
-C:/Users/hotab/CLionProjects/SmartSort/cmake-build-debug/CMakeFiles/SmartSort.dir
-C:/Users/hotab/CLionProjects/SmartSort/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/hotab/CLionProjects/SmartSort/cmake-build-debug/CMakeFiles/rebuild_cache.dir
