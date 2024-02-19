@@ -1,0 +1,8 @@
+# ninja log v5
+51	903	7176054830418863	CMakeFiles/SmartSort.dir/main.cpp.obj	58f5209e313c1e70
+904	1267	7176054833985150	SmartSort.exe	d34fb9e1e6ba0886
+1	146	7176140818444993	build.ninja	33e21ecf3278e424
+62	376	7176054825098607	CMakeFiles/SmartSort.dir/bubble_sort.cpp.obj	5d32e47bf267e619
+9	503	7176143023596142	CMakeFiles/SmartSort.dir/io_array.cpp.obj	4622072715625c25
+5	506	7176143023626058	CMakeFiles/SmartSort.dir/main.cpp.obj	58f5209e313c1e70
+506	651	7176143025003118	SmartSort.exe	31d1a4ba8d5b957
