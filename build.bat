@@ -16,3 +16,4 @@ cmake -G %BUILD_TYPE% ..\%SOURCE_FOLDER%
 cmake --build .
 
 copy ..\%SOURCE_FOLDER%\SmartSort\run_bubble_sort.bat .\SmartSort
+copy ..\%SOURCE_FOLDER%\obuchaika\run_obuchaika.bat .\obuchaika
