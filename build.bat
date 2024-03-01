@@ -1,4 +1,5 @@
 @echo off
+setlocal EnableDelayedExpansion
 
 set BUILD_TYPE=Ninja
 set BUILD_SUFFIX=ninja
@@ -19,3 +20,5 @@ copy ..\%SOURCE_FOLDER%\SmartSort\run_bubble_sort.bat .\SmartSort
 copy ..\%SOURCE_FOLDER%\obuchaiika\run_obuchaika.bat .\obuchaiika
 copy ..\%SOURCE_FOLDER%\prefix_sum\run_prefix_sum.bat .\prefix_sum
 copy ..\%SOURCE_FOLDER%\zachet\run_zachet.bat .\zachet
+
+copy ..\run_tests.bat .
