@@ -16,9 +16,18 @@ cd %BUILD_FOLDER%
 cmake -G %BUILD_TYPE% ..\%SOURCE_FOLDER%
 cmake --build .
 
-copy ..\%SOURCE_FOLDER%\SmartSort\run_bubble_sort.bat .\SmartSort
-copy ..\%SOURCE_FOLDER%\obuchaiika\run_obuchaika.bat .\obuchaiika
-copy ..\%SOURCE_FOLDER%\prefix_sum\run_prefix_sum.bat .\prefix_sum
-copy ..\%SOURCE_FOLDER%\zachet\run_zachet.bat .\zachet
+set arr[0].file=run_bubble_sort.bat
+set arr[1].file=run_obuchaika.bat
+set arr[2].file=run_prefix_sum.bat
+set arr[3].file=run_zachet.bat
+
+set arr[0].folder=SmartSort
+set arr[1].folder=obuchaiika
+set arr[2].folder=prefix_sum
+set arr[3].folder=zachet
+
+for /L %%i in (0,1,5) do ( 
+	copy ..\%SOURCE_FOLDER%\!arr[%%i].folder!\!arr[%%i].file! .\!arr[%%i].folder!
+)
 
 copy ..\run_tests.bat .

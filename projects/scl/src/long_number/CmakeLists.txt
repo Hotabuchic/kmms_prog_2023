@@ -1,0 +1,10 @@
+target_sources(scl_libb
+	PRIVATE
+		long_number.cpp
+	PUBLIC
+		long_number.hpp
+)
+
+target_include_directories(scl_libb PUBLIC
+	"${PROJECT_SOURCE_DIR}/src/long_number"
+)
