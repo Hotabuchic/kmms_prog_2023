@@ -43,7 +43,9 @@ namespace IBusko {
     }
 
     LongNumber::~LongNumber() {
-        delete this->numbers;
+        this->length = 0;
+        delete [] this->numbers;
+        numbers = nullptr;
     }
 
     LongNumber &LongNumber::operator=(const char *const str) {
@@ -59,6 +61,7 @@ namespace IBusko {
             size++;
         }
         this->length = size - local_sign;
+        delete [] this->numbers;
         this->numbers = new int[this->length];
         for (int i = size - 1; i >= local_sign; i--) {
             numbers[size - i - 1] = (int) str[i] - 48;
@@ -67,8 +70,10 @@ namespace IBusko {
     }
 
     LongNumber &LongNumber::operator=(const LongNumber &x) {
+        if (this == &x) return *this;
         this->length = x.length;
         this->sign = x.sign;
+        delete [] this->numbers;
         this->numbers = new int[this->length];
         for (int i = 0; i < this->length; i++) {
             this->numbers[i] = x.numbers[i];
@@ -79,12 +84,13 @@ namespace IBusko {
     LongNumber &LongNumber::operator=(LongNumber &&x) {
         this->length = x.length;
         this->sign = x.sign;
+        delete [] this->numbers;
         this->numbers = x.numbers;
         x.numbers = nullptr;
         return *this;
     }
 
-    bool LongNumber::operator==(const LongNumber &x) {
+    bool LongNumber::operator==(const LongNumber &x) const {
         if (this->length == x.length && this->sign == x.sign) {
             for (int i = 0; i < this->length; i++) {
                 if (this->numbers[i] != x.numbers[i]) {
@@ -96,7 +102,7 @@ namespace IBusko {
         return false;
     }
 
-    bool LongNumber::operator>(const LongNumber &x) {
+    bool LongNumber::operator>(const LongNumber &x) const {
         if (this->sign > x.sign) {
             return true;
         } else if (this->sign < x.sign) {
@@ -136,7 +142,7 @@ namespace IBusko {
         };
     }
 
-    bool LongNumber::operator<(const LongNumber &x) {
+    bool LongNumber::operator<(const LongNumber &x) const {
         if (this->sign < x.sign) {
             return true;
         } else if (this->sign > x.sign) {
@@ -176,16 +182,18 @@ namespace IBusko {
         };
     }
 
-    LongNumber LongNumber::operator+(const LongNumber &x) {
+    LongNumber LongNumber::operator+(const LongNumber &x) const {
         LongNumber result;
         int sum;
         int sign;
         int ostatok = 0;
+        int a_sign;
         int *a;
         int *b;
         if (this->length > x.length) {
             result.length = this->length + 1;
             a = new int[this->length];
+            a_sign = this->sign;
             for (int i = 0; i < this->length; i++) {
                 a[i] = this->numbers[i] * this->sign;
             }
@@ -200,6 +208,7 @@ namespace IBusko {
         } else {
             result.length = x.length + 1;
             a = new int[x.length];
+            a_sign = x.sign;
             for (int i = 0; i < x.length; i++) {
                 a[i] = x.numbers[i] * x.sign;
             }
@@ -216,15 +225,15 @@ namespace IBusko {
         result.numbers = new int[result.length];
         for (int i = 0; i < result.length - 1; i++) {
             sum = a[i] + b[i] + ostatok;
-            if (sum < 0 and sum > -10 and this->length != x.length and a[result.length - 2] > 0) {
+            if ((sum < 0 and sum > -10 and a_sign == 1) or (sum > 0 and sum < 10 and a_sign == -1) and this->length != x.length) {
                 for (int p = i; p < result.length - 1; p++) {
                     if (a[p] != 0) {
                         for (int o = p; o > i + 1; o--) {
-                            a[o] -= 1;
-                            a[o - 1] += 10;
+                            a[o] -= (1 * a_sign);
+                            a[o - 1] += (10 * a_sign);
                         }
-                        sum += 10;
-                        a[i + 1] -= 1;
+                        sum += (10 * a_sign);
+                        a[i + 1] -= (1 *a_sign);
                         ostatok = 0;
                     }
                 }
@@ -253,17 +262,17 @@ namespace IBusko {
         }
         result.sign = sign;
 
-        delete a;
-        delete b;
+        delete [] a;
+        delete [] b;
         return result;
     }
 
-    LongNumber LongNumber::operator-(const LongNumber &x) {
+    LongNumber LongNumber::operator-(const LongNumber &x) const {
         LongNumber result = *this;
         return result + (LongNumber("-1") * x);
     }
 
-    LongNumber LongNumber::operator*(const LongNumber &x) {
+    LongNumber LongNumber::operator*(const LongNumber &x) const {
         LongNumber result;
         int *one_oper = new int[x.length + 1];
         result.sign = this->sign * x.sign;
@@ -294,10 +303,11 @@ namespace IBusko {
                 result.length -= 1;
             }
         }
+        delete [] one_oper;
         return result;
     }
 
-    LongNumber LongNumber::operator/(const LongNumber &x) {
+    LongNumber LongNumber::operator/(const LongNumber &x) const {
         char *buffer_result = new char[this->length + 1];
         int index_2 = 0;
         for (int i = 0; i < this->length + 1; i++) {
@@ -346,10 +356,12 @@ namespace IBusko {
             buffer_result[index_2] = num;
             index_2++;
         };
+        delete [] buffer;
+        delete [] buffer_result;
         return LongNumber(buffer_result);
     }
 
-    LongNumber LongNumber::operator%(const LongNumber &x) {
+    LongNumber LongNumber::operator%(const LongNumber &x) const {
         LongNumber result = *this;
         return result - ((result / x) * x);
     }

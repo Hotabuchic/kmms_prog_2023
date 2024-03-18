@@ -95,63 +95,63 @@ TEST_F(ProcedureFixture, addition) {
 }
 
 TEST_F(ProcedureFixture, addition_v2) {
-	ASSERT_TRUE(one + negative_one == noll) << "Проверка " << one << " + " << negative_one << " = " << noll;
+	ASSERT_TRUE((one + negative_one) == noll) << "Проверка " << one << " + " << negative_one << " = " << noll;
 }
 
 TEST_F(ProcedureFixture, addition_v3) {
-	ASSERT_TRUE(two + ten == twelve) << "Проверка " << two << " + " << ten << " = " << twelve;
+	ASSERT_TRUE((two + ten) == twelve) << "Проверка " << two << " + " << ten << " = " << twelve;
 }
 
 
 
 TEST_F(ProcedureFixture, subtract) {
-	ASSERT_TRUE(one - negative_one == two) << "Проверка " << one << " - " << negative_one << " = " << two;
+	ASSERT_TRUE((one - negative_one) == two) << "Проверка " << one << " - " << negative_one << " = " << two;
 }
 
 TEST_F(ProcedureFixture, subtract_v2) {
-	ASSERT_TRUE(twelve - ten == two) << "Проверка " << twelve << " - " << ten << " = " << two;
+	ASSERT_TRUE((twelve - ten) == two) << "Проверка " << twelve << " - " << ten << " = " << two;
 }
 
 TEST_F(ProcedureFixture, subtract_v3) {
-	ASSERT_TRUE(three - two == negative_one) << "Проверка " << three << " - " << two << " = " << negative_one;
+	ASSERT_FALSE((three - two) == negative_one) << "Проверка " << three << " - " << two << " = " << negative_one;
 }
 
 
 
 TEST_F(ProcedureFixture, multiplication) {
-	ASSERT_TRUE(one * noll == noll) << "Проверка " << one << " * " << noll << " = " << noll;
+	ASSERT_TRUE((one * noll) == noll) << "Проверка " << one << " * " << noll << " = " << noll;
 }
 
 TEST_F(ProcedureFixture, multiplication_v2) {
-	ASSERT_TRUE(one * ten == ten) << "Проверка " << one << " * " << ten << " = " << ten;
+	ASSERT_TRUE((one * ten) == ten) << "Проверка " << one << " * " << ten << " = " << ten;
 }
 
 TEST_F(ProcedureFixture, multiplication_v3) {
-	ASSERT_TRUE(three * two == six) << "Проверка " << three << " * " << two << " = " << six;
+	ASSERT_TRUE((three * two) == six) << "Проверка " << three << " * " << two << " = " << six;
 }
 
 TEST_F(ProcedureFixture, multiplication_v4) {
-	ASSERT_TRUE(negative_one * two == negative_two) << "Проверка " << negative_one << " * " << two << " = " << negative_two;
+	ASSERT_TRUE((negative_one * two) == negative_two) << "Проверка " << negative_one << " * " << two << " = " << negative_two;
 }
 
 
 
 TEST_F(ProcedureFixture, division) {
-	ASSERT_TRUE(noll / one == noll) << "Проверка " << noll << " / " << one << " = " << noll;
+	ASSERT_TRUE((noll / one) == noll) << "Проверка " << noll << " / " << one << " = " << noll;
 }
 
 TEST_F(ProcedureFixture, division_v2) {
-	ASSERT_TRUE(twelve / six == two) << "Проверка " << twelve << " / " << six << " = " << two;
+	ASSERT_TRUE((twelve / six) == two) << "Проверка " << twelve << " / " << six << " = " << two;
 }
 
 TEST_F(ProcedureFixture, division_v3) {
-	ASSERT_TRUE(two / negative_one == negative_two) << "Проверка " << two << " / " << negative_one << " = " << negative_two;
+	ASSERT_TRUE((two / negative_one) == negative_two) << "Проверка " << two << " / " << negative_one << " = " << negative_two;
 }
 
 
 
 TEST_F(ProcedureFixture, remainder_of_division) {
-	ASSERT_TRUE(two / negative_one == negative_two) << "Проверка " << two << " % " << negative_one << " = " << negative_two;
+	ASSERT_TRUE((two / negative_one) == negative_two) << "Проверка " << two << " % " << negative_one << " = " << negative_two;
 }
 
 
